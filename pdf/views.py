@@ -1,5 +1,9 @@
 from django.shortcuts import render
 from .models import Profile 
+import pdfkit
+from django.http import HttpResponse 
+from django.template import loader 
+import io 
 # Create your views here.
 
 def accept(request):
@@ -16,3 +20,7 @@ def accept(request):
         profile = Profile(name=name,email=email,phone=phone,summary=summary,degree=degree,college=college,university=university,experience=experience,skills=skills)
         profile.save()
     return render(request,'pdf/accept.html')
+
+def cv(request,id):
+    user_profile = Profile.objects.get(id=id)
+    return render(request,'pdf/cv.html',{'user_profile':user_profile})
