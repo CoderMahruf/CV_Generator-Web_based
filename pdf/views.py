@@ -23,4 +23,15 @@ def accept(request):
 
 def cv(request,id):
     user_profile = Profile.objects.get(id=id)
-    return render(request,'pdf/cv.html',{'user_profile':user_profile})
+    template = loader.get_template('pdf/cv.html')
+    html = template.render({'user_profile':user_profile})
+    options = {
+        'page-size':'Letter',
+        'encoding':"UTF-8",
+    }
+    path_to_wkhtmltopdf = r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"
+    config = pdfkit.configuration(wkhtmltopdf=path_to_wkhtmltopdf) 
+    pdf = pdfkit.from_string(html, False, options=options, configuration=config)
+    response = HttpResponse(pdf, content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="cv.pdf"'
+    return response
