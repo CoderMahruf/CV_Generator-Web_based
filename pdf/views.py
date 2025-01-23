@@ -35,3 +35,7 @@ def cv(request,id):
     response = HttpResponse(pdf, content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="cv.pdf"'
     return response
+
+def list(request):
+    profiles = Profile.objects.all()
+    return render(request,'pdf/list.html',{'profiles':profiles})

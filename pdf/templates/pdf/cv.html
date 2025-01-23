@@ -11,18 +11,19 @@
     <h2>{{user_profile.phone}}</h2>
     <hr>
     <br>
-    <p>Summary</p>
+    <h4>Summary:</h4>
     <p>{{user_profile.summary}}</p>
-    <p>Skills</p>
+    <hr>
+    <h4>Skills:</h4>
     <p>{{user_profile.skills}}</p>
-    <p>Education</p>
+    <hr>
+    <h4>Education:</h4>
     <ul>
-        <li>{{user_profile.college}}</li>
-        <li>{{user_profile.university}}</li>
+        <li>College: {{user_profile.college}}</li>
+        <li>{{user_profile.degree}} from {{user_profile.university}}</li>
     </ul>
-     <p>Subject</p>
-    <p>{{user_profile.degree}}</p>
-    <p>Experience</p>
+    <hr>
+    <h4>Experience:</h4>
     <p>{{user_profile.experience}}</p>
 </body>
 </html>

@@ -12,7 +12,7 @@ class Profile(models.Model):
     experience = models.TextField(max_length=1000)
     skills = models.TextField(max_length=1000)
 
-    # def __str__(self):
-    #     return self.name 
+    def __str__(self):
+        return self.name 
 
 
